@@ -1,0 +1,99 @@
+﻿<% content_for :head do%>
+<%= javascript_include_tag 'ordershow', 'data-turbolinks-track': 'reload' %>
+<% end %>
+
+<div class="row" >
+	<div class="pull-left">
+		<h3>当前订单状态：<span class:"stage"><%= @stage %></span></h3>
+    </div>
+	<div class="pull-right">
+		<button class="btn btn-danger btn-lg" id="print">打 印</button>
+    </div>
+</div>
+<% clear_cart %>
+<br /><br />
+<!--startprint-->
+<div class="container" style="width:756px;height:1100px;">
+	<div class="row" >
+		<div class="col-xs-4">
+		</div>
+		<div class="col-xs-4">
+			<h2>物资请领报告单</h2>
+		</div>
+		<div class="col-xs-4">
+		</div>
+	</div>
+	<br />
+	<div class="row" >
+		<div class="pull-left">
+			<p>订单编号：<%= @order.id %></p>
+		</div>
+		<div class="pull-right">
+			<p>填制日期：<%= @time %></p>
+		</div>
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th>序号</th>
+					<th>商品类别</th>
+					<th>商品编号</th>
+					<th>商品名称</th>
+					<th>数量</th>
+					<th>单价</th>
+					<th>小计</th>
+					<th>备注</th>
+				</tr>
+			</thead>
+			<tbody align="center">
+				<% for i in 0..22 %>
+					<% if i<@product.length %>
+						<tr class="body">
+							<td style="width:7%"><%= i+1 %></td>
+							<td style="width:12%"><%= @all_item[@product[i].item-1][0] %></td>
+							<td style="width:12%"><%= @product[i].id %></td>
+							<td style="width:37%" align="left"><%= @product[i].title %></td>
+							<td style="width:7%"><span class="amount"><%= @amount[i] %></span></td>
+							<td style="width:8%"><span class="price"><%= @product[i].price %></span></td>
+							<td style="width:9%"><span class="subtotle"></span></td>
+							<td style="width:8%"></td>
+						</tr>
+					<% else %>
+						<tr>
+							<td style="width:7%"><%= i+1 %></td>
+							<td style="width:12%"></td>
+							<td style="width:12%"></td>
+							<td style="width:37%"></td>
+							<td style="width:7%"></td>
+							<td style="width:8%"></td>
+							<td style="width:9%"></td>
+							<td style="width:8%"></td>
+						</tr>
+					<% end %>
+				<% end %>
+				<tr>
+					<td style="width:7%">备注</td>
+					<td colspan="3" style="width:61%" align="left">订单打印完成后经部门领导和经办人签字交与物资采购办公室确认订单，集中采购，收货后请及时领取，验收人签字后完成行政消耗采购。</td>
+					<td style="width:7%">合计</td>
+					<td style="width:8%"><span class="totle"><%= @order.time %></span></td>
+					<td colspan="2" style="width:17%"><span class="bigtotle"><%= @order.time %></span></td>
+				</tr>
+			</tbody>
+		</table>
+	<div>
+	<div class="row" >
+		<div class="col-xs-4">
+			<h4>部门领导审批：</h4>
+		</div>
+		<div class="col-xs-3">
+			<h4>编制单位：<%= @item %></h4>
+		</div>
+		<div class="col-xs-2">
+			<h4>经办人：</h4>
+		</div>
+		<div class="col-xs-3">
+			<h4>验收人：</h4>
+		</div>
+	</div>
+</div>
+<!--endprint-->
+<br /><br />

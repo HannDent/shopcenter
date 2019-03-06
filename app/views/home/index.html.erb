@@ -1,0 +1,36 @@
+﻿<% content_for :head do%>
+<%= javascript_include_tag 'index', 'data-turbolinks-track': 'reload' %>
+<% end %>
+
+<div class="row">
+	<div class="col-lg-3">
+		<%= render 'cagetable' %>
+	</div>
+	<div class="col-lg-9">
+		<ol class="breadcrumb">
+			<li class="active">Home</li>
+		</ol>
+		
+		<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="5000">
+			<ol class="carousel-indicators">
+				<li data-target="#carousel-ad" data-slide-to="0" class="active"></li>
+				<li data-target="#carousel-ad" data-slide-to="1"></li>
+				<li data-target="#carousel-ad" data-slide-to="2"></li>
+			</ol>
+			<div class="carousel-inner" role="listbox">
+				<div class="item active">
+					<%= link_to image_tag("home/1.jpg", alt: "welcome"), wel_announcement1_path %>
+				</div>
+				<div class="item">
+					<%= link_to image_tag("home/2.jpg", alt: "readme"), wel_announcement2_path %>
+				</div>
+				<div class="item">
+					<%= link_to image_tag("home/3.jpg", alt: "whynot"), wel_announcement3_path %>
+				</div>
+			</div>
+			<!-- 轮播（Carousel）导航 -->
+			<a class="carousel-control left" href="#myCarousel"  data-slide="prev">&lsaquo;</a>
+			<a class="carousel-control right" href="#myCarousel"  data-slide="next">&rsaquo;</a>
+		</div>
+	</div> 
+</div>

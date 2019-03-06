@@ -1,0 +1,16 @@
+﻿<ul class="list-group">
+	<li class="list-group-item"><a href="/home/1">硒鼓墨盒</a></li>
+	<li class="list-group-item"><a href="/home/2">电脑配件</a></li>
+	<li class="list-group-item"><a href="/home/3">办公纸笔</a></li>
+	<li class="list-group-item"><a href="/home/4">办公文具</a></li>
+	<li class="list-group-item"><a href="/home/5">财务用品</a></li>
+	<li class="list-group-item"><a href="/home/6">其他</a></li>
+</ul>
+<br />
+<h3><strong>订单公告</strong></h3>
+<br />
+<ul class="list-group">
+	<% for i in 0..7 %>
+		<p><%= @lists[(i+@num)%8] %></p>
+	<% end %>
+</ul>

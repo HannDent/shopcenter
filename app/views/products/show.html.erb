@@ -1,0 +1,50 @@
+﻿<% content_for :head do%>
+<%= javascript_include_tag 'productshow', 'data-turbolinks-track': 'reload' %>
+<% end %>
+
+<div class="row">
+	<div class="col-lg-3">
+		<%= render 'home/cagetable' %>
+	</div>
+	<div class="col-lg-9">
+		<ol class="breadcrumb">
+			<li class="active">Home</li>
+			<li class="active"><%= @title %></li>
+			<li class="active"><%= @product.title %></li>
+		</ol>
+		<h1><%= @product.title %></h1>
+		<div class="row">
+			<div class="col-xs-6 col-md-3">
+				<%= link_to image_tag("product/#{@product.id}.jpg", alt: @product.title), "product/#{@product.id}.jpg" %>
+			</div>
+		</div>
+
+		<ul class="list-unstyled">
+			<li>商品编号: <span id="pid"><%= @product.id %></span></li>
+			<li>库存: 充足</li>
+		</ul>
+		<h3><strong>¥<%= @product.price %></strong></h3>
+		
+		<div>
+			<button class="bleft" >&nbsp;-&nbsp;</button>
+			<input type="text" value="1" class="amount">
+			<button class="bright" >&nbsp;+&nbsp;</button>
+			<br />
+			<br />
+			<button class="btn btn-danger" id="addcart">加入购物车</button>
+		</div>
+		<br />
+		<ul class="nav nav-tabs">
+			<li role="presentation" class="active"><a href="javascript:;">商品描述</a></li>
+		</ul>
+		<br />
+		<div>
+			<% if @product.remark=="html" %>
+				<%= render "html/#{@product.id}" %>
+			<% else %>
+				<%= @product.remark %>
+			<% end %>
+		</div>
+		<br /><br /><br />
+	</div>
+</div>

@@ -1,0 +1,30 @@
+﻿<div class="row">
+	<div class="col-lg-3">
+	<%= render 'cagetable' %>
+	</div>
+	<div class="col-lg-9">
+		<ol class="breadcrumb">
+			<li class="active">Home</li>
+			<li class="active"><%= @title %></li>
+		</ol>
+		<div class="row">
+			<% @products.each do |product| %>
+				<div class="col-sm-6 col-md-4">
+					<div class="thumbnail">
+						<%= link_to image_tag("product/#{product.id}.jpg", alt: product.title), product_path(product) %>
+						<div class="caption">
+							<h4><%= link_to product.title, product_path(product), class: 'title' %></h4>
+							
+						</div>
+						<div class="captionl">
+							<h4><strong>¥<%= product.price %></strong></h4>
+						</div>
+						<div class="captionr">
+							<%= show_add_to_cart product.id*100+1, html_class: "btn-xs" %></p>
+						</div>
+					</div>
+				</div>
+			<% end -%>
+		</div>
+	</div>
+</div>

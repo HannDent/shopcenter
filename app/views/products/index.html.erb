@@ -1,0 +1,31 @@
+﻿<div class="row">
+	<div class="col-lg-12">
+		<ol class="breadcrumb">
+			<li class="active"><a href="/home/admin">管理员</a></li>
+			<li class="active">商品处理</li>
+		</ol>
+		<%= link_to 'New product',new_product_path %>
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>image</th><th>id</th><th>title</th><th>item</th><th>price</th><th>remark</th><th>显示</th><th>编辑</th><th>删除</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @products.each do |product| %>
+				<tr>
+					<td><%= image_tag "product/#{product.id}.jpg", alt: product.title, size: "50x50" %></td>
+					<td><%= product.id %></td>
+					<td><%= product.title %></td>
+					<td><%= product.item %></td>
+					<td><%= product.price %></td>
+					<td><%= product.remark %></td>
+					<td><%= link_to 'Show',product_path(product) %></td>
+					<td><%= link_to 'Edit',edit_product_path(product) %></td>
+					<td><%= link_to 'Destroy',product_path(product),method: :delete %></td>
+				</tr>
+				<% end %>
+			</tbody>
+		</table>
+	</div>
+</div>

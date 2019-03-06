@@ -1,0 +1,23 @@
+﻿<div class="row">
+	<div class="container">
+		<h4 class="text text-success"><i class='fa fa-check-circle-o'></i> 加入购物车成功!</h4>
+		<% add_to_cart @pid*100+@pno %>
+		<div class="alert alert-info">
+			<div class="media shopping-cart-row">
+				<div class="media-left">
+					<%= image_tag "product/#{@product.id}.jpg", class: 'media-object', alt: @product.title, size: "100x100" %>
+				</div>
+				<div class="media-body"><br />
+					<h3 class="media-heading"><%= @product.title %></h3>
+					<p>库存&nbsp;:&nbsp;充足&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					单价:&nbsp;¥&nbsp;<%= @product.price %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					数量:&nbsp;¥&nbsp;<%= @pno %></p>
+				</div>
+			</div>
+		</div>
+		<div class="pull-right">
+			<strong><%= link_to "继续购物", :back %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp</strong>
+			<%= link_to "查看购物车", cart_shop_path, class: "btn btn-danger" %>
+		</div>
+    </div>
+</div>
